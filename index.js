@@ -76,27 +76,7 @@ function analyzeArray(arr) {
     return { results, globalMin, minRows };
 }
 
-// Вывод
-function printAnalysis(results, globalMin, minRows) {
-    console.log('='.repeat(120));
-    console.log('Стр | Массив значений'.padEnd(65) + '| Мин. положит. | Замен для 3+ подряд |');
-    console.log('-'.repeat(120));
-
-    results.forEach((res) => {
-        const rowStr = res.row.map(n => n.toString().padStart(4)).join(' ');
-        const mark = minRows.has(res.rowIndex) ? '*' : ' ';
-        console.log(
-            `${String(res.rowIndex + 1).padStart(3)} | ${rowStr} ${mark} | ${String(res.minPositive).padStart(14)} | ${String(res.replacements).padStart(22)} |`
-        );
-    });
-
-    console.log('='.repeat(120));
-    console.log(`Глобальный минимум: ${globalMin}`);
-    console.log(`Строки с минимумом: ${Array.from(minRows).map(i => i + 1).join(', ')}`);
-}
-
 const arr = generateRandomArray(10, 10, -100, 100);
-
 
 const { results, globalMin, minRows } = analyzeArray(arr);
 
